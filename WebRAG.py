@@ -81,7 +81,7 @@ def main():
     # Creating embedding from the generated chunks
     vectorstore = get_vectorstore(chunks)
     # Initializing the llm
-    llm = ChatGoogleGenerativeAI(model="models/gemini-2.5-pro")
+    llm = ChatGoogleGenerativeAI(model="models/gemini-2.5-flash")
     # Aaking question regarding the fetched webpage.
     print("\nYou can now ask questions about the page. Type 'exit' to quit.")
     while True:
