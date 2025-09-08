@@ -1,9 +1,20 @@
+# Creating a system where we pass the url of a webite and ask question to the system regarding the Website.
+# The system can answer all the questions based on the data of the website.
+# The workflow - the system scraps all the data form every website url.
+# Then it forms chunks of that fetched data
+# Then it forms embeddings of those chunks and store them in the FAISS database, it is different for different urls.
+# And when any url is entered for the secod time, the system automatically use the earlier fetched data instead of scrapping again.
+# Then whenever we ask a question, the system retrieve the mosr relevant chunk according to the cosine similarity.
+# Then the chunk is passed to the llm(Google Gemini-2.5-flash) with the question and the perfect answer is generated.
+
+# Importing the packages used for WebScrapping the provided url
 import os
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 from dotenv import load_dotenv
 
+# Importing the langchain packages that are required
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_google_genai import ChatGoogleGenerativeAI
